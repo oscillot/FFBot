@@ -169,7 +169,8 @@ if not found_thread:
     # Submit the thread
     found_thread = subreddit.submit(thread_title,text=body_content)
     # Set flair
-    found_thread.set_flair(flair_text=flair_text, flair_css_class=flair_css)
+    if use_flair:
+        found_thread.set_flair(flair_text=flair_text, flair_css_class=flair_css)
     if stick_thread:
         found_thread.sticky()
 else:
