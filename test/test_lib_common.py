@@ -3,8 +3,8 @@ import unittest
 
 from ducks import MockAuthor, MockComment, MockReply, MockSubmission, \
     MockSubreddit
-from ffbot.lib import get_comment_replies, get_current_threads, get_number_helped, \
-    get_unanswered_comments, get_wiki_source
+from ffbot.lib import get_comment_replies, get_current_threads, \
+    get_number_helped, get_unanswered_comments, get_wiki_source
 
 
 class TestLibCommon(unittest.TestCase):
@@ -17,7 +17,8 @@ class TestLibCommon(unittest.TestCase):
         self.number_of_mcface_replies = 15
         self.number_of_answered_comments = 13
         self.number_of_unanswered_comments = 112
-        self.comment = MockComment(number_of_replies=self.number_of_sub1_replies)
+        self.comment = MockComment(
+            number_of_replies=self.number_of_sub1_replies)
         self.submission = MockSubmission(
             number_of_comments=self.number_of_comments,
             mock_comment=self.comment)
@@ -46,7 +47,7 @@ class TestLibCommon(unittest.TestCase):
     def test_get_current_threads(self):
         current_threads = get_current_threads(self.subreddit)
         self.assertListEqual([self.submission for _ in range(
-                                 self.number_of_submissions)], current_threads)
+                              self.number_of_submissions)], current_threads)
 
     def test_get_number_mcgg_helped(self):
         helped_candidates = [
@@ -88,17 +89,17 @@ class TestLibCommon(unittest.TestCase):
         self.assertEqual('PASS', wiki_source, )
 
     def test_get_wiki_source_no_data(self):
-        wiki_source_non_existant = get_wiki_source(self.subreddit,
+        wiki_source_non_existent = get_wiki_source(self.subreddit,
                                                    'wiki_test_no_data')
-        self.assertEqual('No Wiki Found', wiki_source_non_existant)
+        self.assertEqual('No Wiki Found', wiki_source_non_existent)
 
     def test_get_wiki_source_html_unescaping(self):
-        wiki_unescapes_correctly = get_wiki_source(self.subreddit,
+        wiki_unescape_correctly = get_wiki_source(self.subreddit,
                                                    'wiki_test_html_unescape')
         self.assertEqual('<img src="https://38.media.tumblr.com/'
                          '98b9454a8e9b591e91a0f98d3dcc3443/'
                          'tumblr_nf1vf6IgPz1s0hg4lo1_500.gif">',
-                         wiki_unescapes_correctly)
+                         wiki_unescape_correctly)
 
     def tearDown(self):
         pass

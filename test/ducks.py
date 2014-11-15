@@ -17,7 +17,7 @@ class MockComment(object):
     :param str or None banned_by: the username that banned this comment author
     """
     def __init__(self, number_of_replies=0, banned_by=None, author=
-            MockAuthor('default_mock_author'), permalink='', created=''):
+                 MockAuthor('default_mock_author'), permalink='', created=''):
         self.banned_by = banned_by
         self.author = author
         self.permalink = permalink

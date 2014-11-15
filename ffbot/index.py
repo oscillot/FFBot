@@ -1,6 +1,6 @@
 import praw
 
-from ffbot import config
+from ffbot.config import config
 
 from ffbot.lib.common import get_current_threads, get_wiki_source
 from lib import create_leader_index, create_unanswered_index
